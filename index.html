@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <title>Maker pre-launch landing page</title>
+</head>
+<body>
+  <header class="logo-wrapper"><img src="assets/logo.svg" class="logo" alt="maker-logo">
+  </header>
+  <img src="assets/illustration-hero-mobile.png" alt="hero-mobile" class="bg-mobile">
+  <div class="top-container">
+    <div class="top-container__textcontainer">
+      <div class="title"><h3>Get paid for the work you <span>love</span> <br> to do.</h3></div>
+      <div class="container-one"><p>The 9-5 grind is so last century. We believe in living life on your 
+        own terms. Whether you’re looking to escape the rat race or set up 
+        a side hustle, we’ve got you covered.</p></div>
+      <img src="/assets/icon-scroll.svg" alt="icon-scroll" class="icon-scroll">
+    </div>
+  </div>
+  <section class="list">
+    <div class="list-wrapper">
+      <div class="pic"><div class="pic-bg"><img src="/assets/illustration-passions.svg" alt="passions"></div></div>
+      <div class="list-bot">
+        <h4>Indulge your passions</h4>
+        <p>Your passions shouldn't be just for the weekend. Earn a living doing what you love.</p>
+      </div>
+    </div>
+    <div class="list-wrapper">
+      <div class="pic"><div class="pic-bg"><img src="/assets/illustration-financial-freedom.svg" alt="financial-freedom"></div>
+    </div>
+      <div class="list-bot">
+        <h4>Gain financial freedom</h4>
+        <p>Start making money work for you. There’s nothing quite like earning while you sleep.</p>
+      </div>
+    </div>
+    <div class="list-wrapper">
+      <div class="pic"><div class="pic-bg"><img src="/assets/illustration-lifestyle.svg" alt="lifestyle"></div>
+    </div>
+      <div class="list-bot">
+        <h4>Choose your lifestyle</h4>
+        <p>Own your daily schedule. Fancy a lie-in? Go for it! Take charge of your week.</p>
+      </div>
+    </div>
+    <div class="list-wrapper">
+      <div class="pic"><div class="pic-bg"><img src="/assets/illustration-work-anywhere.svg" alt="work-anywhere"></div>
+    </div>
+      <div class="list-bot">
+        <h4>Work from anywhere</h4>
+        <p>Selling online means not being pinned down. Want to work AND travel? Go for it!</p>
+      </div>
+    </div>
+  </section>
+  <section class="pricing">
+  <div class="pricing-wrapper">
+    <h4>Our pricing plans</h4>
+    <p>We only make money when our creators make money. Our plans are always affordable, and 
+      it’s completely free to get started.</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-wrapper">
+    <div class="card-first">
+      <img src="/assets/icon-free.svg" alt="icon-free" class="card-first__logo">
+      <div class="top">
+        <h4>Dip your toe</h4>
+        <p>Just getting started? No problem at all! Our free plan will take you a long way.</p>
+      </div>
+      <div class="bot">
+        <h3>Free</h3>
+        <ul class="toplist">
+          <li>Unlimited products</li>
+          <li>Basic analytics</li>
+          <li>Limited marketplace exposure</li>
+          <li>10% fee per transaction</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-second">
+      <img src="/assets/icon-paid.svg" alt="icon-paid" class="card-second__logo">
+      <div class="top">
+        <h4>Dive right in</h4>
+        <p>Ready for the big time? Our paid plan will help you take your business to the next level.</p>
+      </div>
+      <div class="bot">
+        <h3>$25.00</h3><p>/month</p>
+        <ul class="botlist">
+          <li>Custom domain</li>
+          <li>Advanced analytics and reports</li>
+          <li>High marketplace visibility</li>
+          <li>5% fee per transaction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="email">
+  <div class="email-wrapper">
+    <h3 class="email-wrapper__title">Get notified when we launch</h3>
+    <div class="input-wrapper">        
+      <input type="text" class="email-input" placeholder="Email address">
+      <div class="btn"><p>Get notified</p></div>    
+    </div>
+    <div class="validation"></div>
+  </div>
+</section>
+  
+  
+</body>
+
+</html>
+<script>
+  const emailEl = document.querySelector('.email-input')
+  const btnEl = document.querySelectorAll('.btn')
+  const validEl = document.querySelector('.validation')
+
+  function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+var clicked = false;
+
+function clickEvent() {
+if(!clicked)
+{
+    clicked = true;
+    console.log('clicked!!');
+    setTimeout(function(){
+        clicked = false;
+    }, 3000);
+}
+}
+
+  btnEl.forEach(element => {
+    element.addEventListener('click', e => {
+      console.log(emailEl.value)
+    if (emailEl.value == '') {
+      validEl.style.color = '#ff0000'
+      validEl.textContent = "Oops! Please add your email"
+      emailEl.style.border = '2px solid #ff0000'
+    } else {
+      if (validateEmail(emailEl.value)) {
+      validEl.style.color = '#3EE9E5'
+      validEl.textContent = 'Email sent'
+    } else {
+      validEl.style.color = '#ff0000'
+      validEl.textContent = 'Oops! That doesnt look like an email address'
+      emailEl.style.border = '2px solid #ff0000'
+    }
+    }
+
+    setTimeout(function(){
+       validEl.textContent = ''
+       emailEl.style.border = ''
+   }, 3000);
+  })
+  });
+</script>
